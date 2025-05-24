@@ -1,0 +1,11 @@
+# Criar Resource Group:
+az group create -l eastus -n rg-mottomap
+
+# Criar Máquina Virtual:
+az vm create --resource-group rg-mottomap --name vm-linux-mottomap --image Canonical:ubuntu-24_04-lts:minimal:24.04.202505020 --size Standard_B2s --admin-username admin_fiap --admin-password admin_fiap@123
+
+# Liberar a porta 8080:
+az network nsg rule create --resource-group rg-mottomap --nsg-name vm-linux-mottomapNSG --name port_8080 --protocol tcp --priority 1010 --destination-port-range 8080
+
+# Liberar a porta 80:
+az network nsg rule create --resource-group rg-mottomap --nsg-name vm-linux-mottomapNSG --name port_80 --protocol tcp --priority 1020 --destination-port-range 80
