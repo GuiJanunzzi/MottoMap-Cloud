@@ -98,7 +98,7 @@ A aplicação é empacotada em um container Docker e hospedada em uma máquina v
     ```bash
     docker run -d -p 8080:8080 guijanunzzi/mottomap_backend:1.0
     ```
-8.  **Testar via IP público da VM**
+8.  **Testar via IP público da VM** \
     Swagger:
     ```
     http://<IP_Público_VM>:8080/swagger-ui/index.html
