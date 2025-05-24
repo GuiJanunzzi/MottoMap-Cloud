@@ -4,7 +4,7 @@ Este repositório contém o backend em Java (Spring Boot) do sistema MotoMap –
 
 ## 👥 Desenvolvedores
 
-* Caike Dametto – RM558614
+* Caike Dametto – RM55861
 * Guilherme Janunzi – RM558461
 
 ## 🧾 Descrição
@@ -60,9 +60,9 @@ A aplicação é empacotada em um container Docker e hospedada em uma máquina v
     docker build -t mottomap_backend:1.0 .
     docker run -d -p 8080:8080 mottomap_backend:1.0
     ```
-    Testar via browser:
+    Testar via browser (swagger):
     ```
-    [http://host.docker.internal:8080/swagger-ui/index.html](http://host.docker.internal:8080/swagger-ui/index.html)
+    http://host.docker.internal:8080/swagger-ui/index.html
     ```
     Ou via API client como Insomnia/Postman.
 
