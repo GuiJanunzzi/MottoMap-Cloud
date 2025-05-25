@@ -62,7 +62,7 @@ A aplicação é empacotada em um container Docker e hospedada em uma máquina v
     ```
     Testar via browser (swagger):
     ```
-    http://host.docker.internal:8080/swagger-ui/index.html
+    http://localhost:8080/swagger-ui/index.html
     ```
     Ou via API client como Insomnia/Postman.
 
