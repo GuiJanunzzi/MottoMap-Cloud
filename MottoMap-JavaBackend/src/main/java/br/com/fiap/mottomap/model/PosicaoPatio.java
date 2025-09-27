@@ -1,13 +1,16 @@
 package br.com.fiap.mottomap.model;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -23,37 +26,45 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Schema(description = "Entidade que representa uma posição do patio no sistema da Mottu")
+@Table(name = "T_MM_POSICAO_PATIO")
 public class PosicaoPatio {
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Schema(description = "ID único da posição", example = "1", readOnly = true)
+    @Column(name = "CD_POSICAO")
     private Long id;
 
     @NotBlank(message = "A identificação é obrigátoria")
     @Size(min = 2, message = "A identificação deve ter no minimo 2 caracteres")
     @Schema(description = "Identificação da posição", example = "A1", required = true)
+    @Column(name = "CD_IDENTIFICACAO")
     private String identificacao;
 
     @NotNull(message = "O numero da fila é obrigátorio")
     @Positive(message = "O numero não pode ser zero ou negativo")
     @Schema(description = "Numero da coluna da posição", example = "1", required = true)
+    @Column(name = "NR_LINHA")
     private int numeroLinha;
 
     @NotNull(message = "O numero da coluna é obrigátorio")
     @Positive(message = "O numero não pode ser zero ou negativo")
     @Schema(description = "Numero da linha da posição", example = "1", required = true)
+    @Column(name = "NR_COLUNA")
     private int numeroColuna;
 
     @NotNull(message = "A area é obrigatória")
     @Enumerated(EnumType.STRING)
     @Schema(description = "Área da posição", example = "PRONTAS", required = true)
+    @Column(name = "DS_AREA")
     private Area area;
 
     @NotNull(message = "O campo 'ocupado' deve ser informado")
     @Schema(description = "Indica se a posição está ocupada (true) ou não (false)", example = "false", required = true)
+    @Column(name = "DS_OCUPADO")
     private Boolean ocupado;
 
     @NotNull(message = "campo obrigatório")
     @ManyToOne
+    @JoinColumn(name = "CD_FILIAL")
     private Filial filial;
 }
