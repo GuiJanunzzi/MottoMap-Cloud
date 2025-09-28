@@ -9,6 +9,8 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 
+ENV ACTIVE_PROFILE=prod
+
 COPY --from=build /build/MottoMap-JavaBackend/target/*.jar app.jar
 
 RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser

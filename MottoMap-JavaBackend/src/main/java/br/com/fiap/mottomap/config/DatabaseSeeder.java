@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 import br.com.fiap.mottomap.model.Area;
 import br.com.fiap.mottomap.model.CargoUsuario;
@@ -25,6 +26,7 @@ import br.com.fiap.mottomap.repository.UsuarioRepository;
 import jakarta.annotation.PostConstruct;
 
 @Configuration
+@Profile("dev")
 public class DatabaseSeeder {
     
     @Autowired
