@@ -1,0 +1,14 @@
+Build:
+- docker build -t mottomap_backend:1.0 .
+
+Rodar localmente
+- docker run -d --name mottomap-backend -p 8080:8080 -e DB_HOST="mottomap-db.database.windows.net" -e DB_NAME="mottomap-db" -e DB_USERNAME="admin_mottomap" -e DB_PASSWORD="Senha@Test123" mottomap_backend:1.0
+
+Login no ACR:
+- az acr login --name mottomap
+
+Remarcando a imagem para subir no ACR:
+- docker tag mottomap_backend:1.0 mottomap.azurecr.io/mottomap_backend:v1
+
+Subindo a imagem para o ACR:
+- docker push mottomap.azurecr.io/mottomap_backend:v1
